@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Tom",
+        "vehicleType": "Sedan",
+        "licensePlate": "HP 31 4040",
+        "entryDate": "2023-10-01T09:00:00Z", 
+        "exitDate": "2023-10-05T17:00:00Z"   
+    },
+    {
+        "name": "Arya",
+        "vehicleType": "SUV",
+        "licensePlate": "DL 10 AB 1234",
+        "entryDate": "2023-10-02T10:00:00Z",
+        "exitDate": "2023-10-03T15:00:00Z"
+    },
+    {
+        "name": "Bobby",
+        "vehicleType": "Hatchback",
+        "licensePlate": "MH 12 CD 5678",
+        "entryDate": "2023-10-01T08:30:00Z",
+        "exitDate": "2023-10-04T12:00:00Z"
+    },
+    {
+        "name": "Charlie",
+        "vehicleType": "Convertible",
+        "licensePlate": "KA 05 EF 9101",
+        "entryDate": "2023-10-03T11:00:00Z",
+        "exitDate": "2023-10-06T14:00:00Z"
+    },
+    {
+        "name": "Divya",
+        "vehicleType": "Van",
+        "licensePlate": "UP 16 GH 1122",
+        "entryDate": "2023-10-04T09:00:00Z",
+        "exitDate": "2023-10-05T10:30:00Z"
+    },
+    {
+        "name": "Aditya",
+        "vehicleType": "Truck",
+        "licensePlate": "TN 09 IJ 3344",
+        "entryDate": "2023-10-05T08:00:00Z",
+        "exitDate": "2023-10-10T16:00:00Z"
+    },
+    {
+        "name": "Phani",
+        "vehicleType": "Motorcycle",
+        "licensePlate": "RJ 14 KL 5566",
+        "entryDate": "2023-10-02T10:30:00Z",
+        "exitDate": "2023-10-03T14:00:00Z"
+    },
+    {
+        "name": "Raju",
+        "vehicleType": "Sedan",
+        "licensePlate": "HR 26 MN 7788",
+        "entryDate": "2023-10-01T09:15:00Z",
+        "exitDate": "2023-10-05T18:00:00Z"
+    },
+    {
+        "name": "Sathvik",
+        "vehicleType": "Motorcycle",
+        "licensePlate": "AP 05 BT 1840",
+        "entryDate": "2023-10-01T08:45:00Z",
+        "exitDate": "2023-10-05T15:00:00Z"
+    }
+]

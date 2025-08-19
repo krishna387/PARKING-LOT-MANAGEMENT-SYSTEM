@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <title>Parking Management System</title>
+</head>
+
+<body>
+  <h1>Parking Lot Management System</h1>
+
+  <div class="form-container">
+    <h3>Add Vehicle Details</h3>
+    <form class="cf" id="cf">
+      <input type="text" class="inputBox" id="input-name" placeholder="Name" required />
+      <input type="text" class="inputBox" id="input-vehicleType" placeholder="Vehicle Type" required />
+      <input type="text" class="inputBox" id="input-licensePlate" placeholder="License Plate" required />
+      <input type="date" class="inputBox" id="input-entry" required />
+      <input type="date" class="inputBox" id="input-exit" required />
+
+      <!-- 👇 New: Upload field and recognize button -->
+      <input type="file" id="plateImage" accept="image/*" required />
+      <button type="button" id="upload-recognize">Upload & Auto-Fill Plate</button>
+
+      <input type="submit" value="Submit" id="input-submit" />
+    </form>
+  </div>
+
+  <h3>Vehicle Details</h3>
+  <div class="search-bar">
+    <input type="text" name="search" id="searchInput" placeholder="Search" />
+  </div>
+  <div class="delete-container">
+    <input type="text" id="delete-input" placeholder="Enter license plate number to delete">
+    <button id="delete-btn">Delete</button>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Vehicle Type</th>
+        <th>License Plate</th>
+        <th>Entry Date</th>
+        <th>Exit Date</th>
+      </tr>
+    </thead>
+    <tbody id="datagohere">
+      <!-- Data from data.json will be inserted here -->
+    </tbody>
+  </table>
+
+  <div class="prediction-container">
+    <h3>Predict Vehicle Stay Duration</h3>
+    <input type="number" id="entry-time" placeholder="Entry Time (hours)" required />
+    <input type="number" id="exit-time" placeholder="Exit Time (hours)" required />
+    <button id="predict-btn">Predict Stay Duration</button>
+    <p id="prediction-result"></p>
+  </div>
+
+  <div class="footer-container">
+    <footer>
+      <a>Parking Management System</a>
+    </footer>
+  </div>
+
+  <script>
+    // Upload and auto-fill license plate using AI
+    document.getElementById('upload-recognize').addEventListener('click', async () => {
+      const fileInput = document.getElementById('plateImage');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Please select an image first.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('carImage', file);
+
+      try {
+        const uploadRes = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!uploadRes.ok) throw new Error('Upload failed');
+
+        const recogRes = await fetch('/recognize');
+        const result = await recogRes.json();
+
+        if (result.plateNumber) {
+          document.getElementById('input-licensePlate').value = result.plateNumber;
+        } else {
+          alert('License plate could not be recognized.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('An error occurred during recognition.');
+      }
+    });
+  </script>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+``
